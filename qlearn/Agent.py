@@ -1,7 +1,7 @@
 from tensorflow.keras.layers import Dense
 from tensorflow.keras.models import Sequential, load_model
 import numpy as np
-
+import time
 
 class Agent:
     def __init__(self, grid_size, epsilon=1, epsilon_decay=0.998, epsilon_end=0.01, gamma=0.99):
@@ -48,7 +48,7 @@ class Agent:
 
         return action
 
-    def learn(self, experiences):
+    def learn(self, experiences, episode, step):
         states = np.array([experience.state for experience in experiences])
         actions = np.array([experience.action for experience in experiences])
         rewards = np.array([experience.reward for experience in experiences])
@@ -75,7 +75,13 @@ class Agent:
                 target_q_values[i, actions[i]] = rewards[i] + self.gamma * np.max(next_q_values[i])
 
         # Train the model
+        print(f"episode {episode}, step {step}")
+        # 这里长度都是 32，然后里面的维度是 4,32是batch的大小
+        print(f"states length is {len(states)}, target_q_values length is {len(target_q_values)}")
+        start_time = time.time()
         self.model.fit(states, target_q_values, epochs=1, verbose=0)
+        end_time = time.time()
+        print(f"train cost time is: {end_time - start_time}")
 
     def load(self, file_path):
         self.model = load_model(file_path)

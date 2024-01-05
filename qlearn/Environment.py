@@ -114,9 +114,9 @@ class Environment:
     def render(self):
         # Convert to a list of ints to improve formatting
         grid = self.grid.astype(int).tolist()
-        for row in grid:
-            print(row)
-        print('')  # To add some space between renders for each step
+        # for row in grid:
+        #     print(row)
+        # print('')  # To add some space between renders for each step
 
     def step(self, action):
         # Apply the action to the environment, record the observations
