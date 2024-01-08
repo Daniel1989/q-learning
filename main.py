@@ -23,7 +23,7 @@ def start(enable_model: bool = False):
     experience_replay = ExperienceReplay(capacity=10000, batch_size=32)
 
     # Number of episodes to run before training stops
-    episodes = 200
+    episodes = 100
     # Max number of steps in each episode
     max_steps = 500
 
@@ -71,11 +71,11 @@ def start(enable_model: bool = False):
 
 if __name__ == '__main__':
     start()
-    start(True)
-    print(
-        f"with_model_step length is: {len(history['with_model_step'])}, average step is {sum(history['with_model_step']) / len(history['with_model_step'])}")
-
-    print(
-        f"no_model_step length is: {len(history['no_model_step'])}, average step is {sum(history['no_model_step']) / len(history['no_model_step'])}")
-
-    plot_history(history)
+    # start(True)
+    # print(
+    #     f"with_model_step length is: {len(history['with_model_step'])}, average step is {sum(history['with_model_step']) / len(history['with_model_step'])}")
+    #
+    # print(
+    #     f"no_model_step length is: {len(history['no_model_step'])}, average step is {sum(history['no_model_step']) / len(history['no_model_step'])}")
+    #
+    # plot_history(history)

@@ -9,6 +9,9 @@
 action就是走哪一步棋，然后看带来了什么reward
 
 https://github.com/HestonCV/rl-gym-from-scratch
+优化能到10个馆子
+https://github.com/Zeta36/chess-alpha-zero
+学习
 https://towardsdatascience.com/develop-your-first-ai-agent-deep-q-learning-375876ee2472#c87e
 
 ### 整体流程
@@ -26,9 +29,8 @@ https://towardsdatascience.com/develop-your-first-ai-agent-deep-q-learning-37587
    2. 打印每次训练是哪个大迭代中哪个步骤，打印训练的长度，打印训练开始时间和结束时间 -- 当部署达到32步后就会进入到训练
    3. 切换gpu，看训练时间是否有提起 -- 不会，因为数据量太小，还不如cpu。具体参考其他
 2. 为什么需要在getAction中，偶尔会随机返回 -- 就是为了避免限于局部优点，在早期让agent多多探索，随着后面学习越来越熟练，随机action就越来越少了
-3. 【TODO】看训练的state和target value分别是什么
-4. 【TODO】在通读一遍代码
-5. 【TODO】结合游戏
+3. 看训练的state和target value分别是什么 -- 就是当前的状态和对应的action的值，真正的action从最大值取
+4.【TODO】结合游戏
 
 ### 其他
 1. 关于为什么在小数据下，gpu不如cpu快。参考 https://github.com/pytorch/pytorch/issues/77799
